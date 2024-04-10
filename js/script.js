@@ -102,6 +102,7 @@ const runGame = () => {
     gameComponents.appendChild(buzzer);
 
     buzzer.addEventListener("click", scoreCounter);
+    document.addEventListener("keydown", scoreCounter);
   }, 1200)  
 }
 
