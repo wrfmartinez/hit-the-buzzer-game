@@ -105,5 +105,5 @@ const runGame = () => {
   }, 1200)  
 }
 
-document.addEventListener("keydown", runGame);
+document.addEventListener("keydown", runGame, { once: true });
 startButton.addEventListener("click", runGame);
