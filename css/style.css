@@ -39,6 +39,10 @@ body {
   border-radius: 15px;
 }
 
+#start-btn:hover {
+  cursor: pointer;
+}
+
 /* FADE OUT ANIMATION */
 .fade-out {
   transition: 1.5s;
