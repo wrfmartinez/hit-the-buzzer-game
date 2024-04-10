@@ -10,11 +10,12 @@ body {
   align-items: center;
   height: 100dvh;
   font-family: Silkscreen, sans-serif;
+  font-size: 30px;
   --primary-color: #539987;
   --secondary-color: #52FFB8;
-  --tertiary-color: #4DFFF3;
+  --tertiary-color: #ff4d4d;
   --quaternary-color: #615756;
-  --quinary-color: #503D3f;
+  --quinary-color: #4f4f4f;
 }
 
 /* INITIAL STATE OF GAME SECTION */
@@ -40,8 +41,8 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 2fr;
-  width: 40%;
-  height: 50%;
+  width: 70%;
+  height: 80%;
 }
 
 #game-display {
@@ -53,5 +54,23 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
+  gap: 130px;
+}
+
+@media (min-width: 1270px) {
+  #game-display {
+    margin-right: 50px;
+  }
+}
+
+#cookie {
+  width: 40px;
+}
+
+#buzzer {
+  height: 90px;
+  width: 90px;
+  background-color: var(--tertiary-color);
+  border: 8px solid var(--quinary-color);
+  border-radius: 50%;
 }
