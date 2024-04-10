@@ -1,28 +1,56 @@
+const body = document.querySelector("body");
 const startButton = document.getElementById("start-btn");
+const divElement = document.createElement("div");
 const pElement = document.createElement("p");
 const gameComponentsDiv = document.createElement("div");
 const cookieImg = document.createElement("img");
+let message = document.createElement("p");
 let scoreState = 0;
+
+const displayMessage = () => {
+  message.textContent = "You Win A Cookie!";
+  cookieImg.replaceWith(message);
+}
 
 const showCookie = () => {
   cookieImg.classList.remove("hide");
+
+  cookieImg.classList.add("rotate");
+
+  setTimeout(() => {
+    cookieImg.classList.remove("rotate");
+    cookieImg.classList.add("scale");
+  }, 300)
+
+  setTimeout(() => {
+    cookieImg.classList.remove("scale");
+    cookieImg.classList.remove("rotate");
+  }, 1200)
 }
 
 const removeCookie = () => {
-  cookieImg.classList.add("hide");
+  displayMessage();
+  setTimeout(() => {
+    message.replaceWith(cookieImg);
+    cookieImg.classList.add("hide");
+  }, 700)
 }
 
 const scoreCounter = () => {
-  scoreState++;
-  pElement.textContent = "Score: " + scoreState;
-  showCookie();
-  setTimeout(() => {
+  if (scoreState < 20) {
+    scoreState++;
+    pElement.textContent = "Score: " + scoreState;
+    showCookie();
+    setTimeout(() => {
     removeCookie();
-  }, 1000)
+    }, 1000)
+  } else {
+    message.textContent = "You ate too much cookies.. Game Over";
+    cookieImg.replaceWith(message);
+  }
 }
 
 const runGame = () => {
-  const body = document.querySelector("body");
   const gameSection = document.createElement("section");
   const scoreboardSection = document.createElement("section");
   const gameDisplaySection = document.createElement("section");
@@ -68,7 +96,9 @@ const runGame = () => {
 
     // Add the buzzer to the page
     const gameComponents = document.querySelector(".game-components");
-    gameComponents.appendChild(cookieImg);
+    gameComponents.appendChild(divElement);
+    divElement.appendChild(cookieImg)
+    // gameComponents.appendChild(cookieImg);
     gameComponents.appendChild(buzzer);
 
     buzzer.addEventListener("click", scoreCounter);
