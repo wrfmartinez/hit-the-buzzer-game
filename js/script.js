@@ -3,7 +3,7 @@ const pElement = document.createElement("p");
 let scoreState = 0;
 const cookieImg = document.createElement("img");
 
-const score = () => {
+const scoreCounter = () => {
   scoreState++;
   pElement.textContent = "Score: " + scoreState;
 }
@@ -53,7 +53,7 @@ const runGame = () => {
     const gameComponents = document.querySelector(".game-components");
     gameComponents.appendChild(buzzer);
 
-    buzzer.addEventListener("click", score);
+    buzzer.addEventListener("click", scoreCounter);
   }, 1200)  
 }
 
