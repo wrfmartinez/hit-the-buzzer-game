@@ -43,21 +43,6 @@ body {
   cursor: pointer;
 }
 
-/* FADE OUT ANIMATION */
-.fade-out {
-  transition: 1.5s;
-  color: transparent;
-  background-color: transparent !important;
-}
-
-.remove {
-  display: none;
-}
-
-.hide {
-  visibility: hidden;
-}
-
 /* GAME INITIALIZED SECTION */
 #game {
   display: grid;
@@ -100,4 +85,38 @@ body {
 
 #buzzer:hover {
   cursor: pointer;
+}
+
+/* ANIMATIONS & ACTIONS */
+
+/* FADE OUT ANIMATION */
+.fade-out {
+  transition: 1.5s;
+  color: transparent;
+  background-color: transparent !important;
+}
+
+/* SCALE ANIMATIONS */
+.scale {
+  transition: 0.5s;
+  transform: scale(2);
+}
+
+.de-scale {
+  transition: 0.5s;
+  transform: scale(1);
+}
+
+/* ROTATE ANIMATION */
+.rotate {
+  transition: 0.8s;
+  transform: rotate(1turn);
+}
+
+.remove {
+  display: none;
+}
+
+.hide {
+  visibility: hidden;
 }
