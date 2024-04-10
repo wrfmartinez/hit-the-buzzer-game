@@ -1,11 +1,24 @@
 const startButton = document.getElementById("start-btn");
 const pElement = document.createElement("p");
-let scoreState = 0;
+const gameComponentsDiv = document.createElement("div");
 const cookieImg = document.createElement("img");
+let scoreState = 0;
+
+const showCookie = () => {
+  cookieImg.classList.remove("hide");
+}
+
+const removeCookie = () => {
+  cookieImg.classList.add("hide");
+}
 
 const scoreCounter = () => {
   scoreState++;
   pElement.textContent = "Score: " + scoreState;
+  showCookie();
+  setTimeout(() => {
+    removeCookie();
+  }, 1000)
 }
 
 const runGame = () => {
@@ -13,7 +26,6 @@ const runGame = () => {
   const gameSection = document.createElement("section");
   const scoreboardSection = document.createElement("section");
   const gameDisplaySection = document.createElement("section");
-  const gameComponentsDiv = document.createElement("div");
   const buzzer = document.createElement("button");
   const gameIntro = document.getElementById("game-intro");
   
@@ -39,6 +51,11 @@ const runGame = () => {
 
     gameComponentsDiv.classList.add("game-components");
 
+    cookieImg.setAttribute("id", "cookie");
+    cookieImg.setAttribute("src", "assets/cookie.svg");
+    cookieImg.setAttribute("alt", "cookie");
+    cookieImg.classList.add("hide");
+
     buzzer.setAttribute("id", "buzzer");
 
     // Add scoreboard to the page
@@ -51,6 +68,7 @@ const runGame = () => {
 
     // Add the buzzer to the page
     const gameComponents = document.querySelector(".game-components");
+    gameComponents.appendChild(cookieImg);
     gameComponents.appendChild(buzzer);
 
     buzzer.addEventListener("click", scoreCounter);
