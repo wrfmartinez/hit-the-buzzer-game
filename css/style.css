@@ -93,3 +93,7 @@ body {
   border: 8px solid var(--quinary-color);
   border-radius: 50%;
 }
+
+#buzzer:hover {
+  cursor: pointer;
+}

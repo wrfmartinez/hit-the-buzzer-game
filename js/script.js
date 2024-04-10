@@ -1,13 +1,19 @@
-const body = document.querySelector("body");
 const startButton = document.getElementById("start-btn");
+const pElement = document.createElement("p");
+let scoreState = 0;
+const cookieImg = document.createElement("img");
+
+const score = () => {
+  scoreState++;
+  pElement.textContent = "Score: " + scoreState;
+}
 
 const runGame = () => {
-  const pElement = document.createElement("p");
+  const body = document.querySelector("body");
   const gameSection = document.createElement("section");
   const scoreboardSection = document.createElement("section");
   const gameDisplaySection = document.createElement("section");
   const gameComponentsDiv = document.createElement("div");
-  const cookieImg = document.createElement("img");
   const buzzer = document.createElement("button");
   const gameIntro = document.getElementById("game-intro");
   
@@ -26,16 +32,12 @@ const runGame = () => {
 
     scoreboardSection.setAttribute("id", "scoreboard");
     scoreboardSection.appendChild(pElement);
-    pElement.textContent = "Score: " + 0;
+    pElement.textContent = "Score: " + scoreState;
 
     gameDisplaySection.setAttribute("id", "game-display");
     body.appendChild(gameDisplaySection);
 
     gameComponentsDiv.classList.add("game-components");
-    
-    cookieImg.setAttribute("id", "cookie");
-    cookieImg.setAttribute("src", "assets/cookie.svg")
-    cookieImg.setAttribute("alt", "cookie")
 
     buzzer.setAttribute("id", "buzzer");
 
@@ -50,11 +52,9 @@ const runGame = () => {
     // Add the buzzer to the page
     const gameComponents = document.querySelector(".game-components");
     gameComponents.appendChild(buzzer);
-  }, 1200)
-}
 
-const score = () => {
-
+    buzzer.addEventListener("click", score);
+  }, 1200)  
 }
 
 startButton.addEventListener("click", runGame);
