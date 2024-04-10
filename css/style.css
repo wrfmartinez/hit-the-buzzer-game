@@ -5,17 +5,17 @@
 }
 
 body {
+  --primary-color: #539987;
+  --secondary-color: #52FFB8;
+  --tertiary-color: #ff4d4d;
+  --quaternary-color: #615756;
+  --quinary-color: #4f4f4f;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100dvh;
   font-family: Silkscreen, sans-serif;
   font-size: 30px;
-  --primary-color: #539987;
-  --secondary-color: #52FFB8;
-  --tertiary-color: #ff4d4d;
-  --quaternary-color: #615756;
-  --quinary-color: #4f4f4f;
 }
 
 /* INITIAL STATE OF GAME SECTION */
@@ -32,8 +32,22 @@ body {
   font-weight: 600;
   background-color: var(--secondary-color);
   padding: 10px;
-  border: 1px solid black;
+  border-top: 4px solid black;
+  border-right: 4px solid black;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
   border-radius: 15px;
+}
+
+/* FADE OUT ANIMATION */
+.fade-out {
+  transition: 1.5s;
+  color: transparent;
+  background-color: transparent !important;
+}
+
+.remove {
+  display: none;
 }
 
 /* GAME INITIALIZED SECTION */
