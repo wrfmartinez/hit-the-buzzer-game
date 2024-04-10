@@ -17,6 +17,7 @@ body {
   --quinary-color: #503D3f;
 }
 
+/* INITIAL STATE OF GAME SECTION */
 #game-intro {
   text-align: center; 
 }
@@ -32,4 +33,25 @@ body {
   padding: 10px;
   border: 1px solid black;
   border-radius: 15px;
+}
+
+/* GAME INITIALIZED SECTION */
+#game {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 2fr;
+  width: 40%;
+  height: 50%;
+}
+
+#game-display {
+  justify-self: center;
+  align-self: self-start;
+}
+
+.game-components {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
 }
