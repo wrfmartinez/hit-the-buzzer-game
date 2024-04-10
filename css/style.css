@@ -24,3 +24,12 @@ body {
 #game-title {
   font-size: 3em;
 }
+
+#start-btn {
+  font-size: 12px;
+  font-weight: 600;
+  background-color: var(--secondary-color);
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 15px;
+}
