@@ -10,6 +10,11 @@ body {
   align-items: center;
   height: 100dvh;
   font-family: Silkscreen, sans-serif;
+  --primary-color: #539987;
+  --secondary-color: #52FFB8;
+  --tertiary-color: #4DFFF3;
+  --quaternary-color: #615756;
+  --quinary-color: #503D3f;
 }
 
 #game-intro {
