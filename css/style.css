@@ -9,6 +9,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100dvh;
+  font-family: Silkscreen, sans-serif;
 }
 
 #game-intro {
