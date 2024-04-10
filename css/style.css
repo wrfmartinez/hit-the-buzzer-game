@@ -73,6 +73,14 @@ body {
   height: 41px;
 }
 
+.game-components > div {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 41px;
+}
+
 @media (min-width: 1270px) {
   #game-display {
     margin-right: 50px;
