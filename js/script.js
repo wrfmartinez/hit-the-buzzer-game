@@ -2,10 +2,14 @@ const body = document.querySelector("body");
 const startButton = document.getElementById("start-btn");
 const divElement = document.createElement("div");
 const pElement = document.createElement("p");
+const gameInstruction = document.createElement("p");
 const gameComponentsDiv = document.createElement("div");
+const scoreboardSection = document.createElement("section");
+const buzzer = document.createElement("button");
 const cookieImg = document.createElement("img");
 let message = document.createElement("p");
 let scoreState = 0;
+const randomCookieGoal = Math.floor(Math.random() * 100);
 
 const displayMessage = () => {
   message.textContent = "You Win A Cookie!";
@@ -37,24 +41,34 @@ const removeCookie = () => {
 }
 
 const scoreCounter = () => {
-  if (scoreState < 20) {
     scoreState++;
-    pElement.textContent = "Score: " + scoreState;
+    pElement.textContent = "Score: " + scoreState + " Your Cookie Target Is: " + randomCookieGoal;
     showCookie();
     setTimeout(() => {
-    removeCookie();
-    }, 1000)
+      removeCookie();
+    }, 1000);
+}
+
+const startTimer = () => {
+  setTimeout(() => {
+    endGame();
+  }, 20000);
+}
+
+const endGame = () => {
+  scoreboardSection.classList.add("hide");
+  buzzer.classList.add("hide");
+  if (scoreState < randomCookieGoal) {
+    message.textContent = "You did not satisfy your cravings.." + " You only ate " + scoreState + " cookies ☹︎";
   } else {
-    message.textContent = "You satisfied your cravings.. Come back next time for more!";
-    cookieImg.replaceWith(message);
+    message.textContent = "You satisfied your cravings.. Come back next time for more!" + " You ate " + scoreState + " cookies!";
   }
+  cookieImg.replaceWith(message);
 }
 
 const runGame = () => {
   const gameSection = document.createElement("section");
-  const scoreboardSection = document.createElement("section");
   const gameDisplaySection = document.createElement("section");
-  const buzzer = document.createElement("button");
   const gameIntro = document.getElementById("game-intro");
   
   // Adds fade out animation to the game intro elements
@@ -98,10 +112,17 @@ const runGame = () => {
     const gameComponents = document.querySelector(".game-components");
     gameComponents.appendChild(divElement);
     divElement.appendChild(cookieImg)
-    // gameComponents.appendChild(cookieImg);
     gameComponents.appendChild(buzzer);
 
-    buzzer.addEventListener("click", scoreCounter);
+    gameInstruction.textContent = "You have 2 minutes to eat as many cookies to satisfy your cookie craving by clicking the button! Eat up!";
+
+    divElement.appendChild(gameInstruction);
+
+    buzzer.addEventListener("click", () => {
+      gameInstruction.remove();
+      startTimer();
+      scoreCounter();
+    });
   }, 1200)  
 }
 
