@@ -47,6 +47,7 @@ const scoreCounter = () => {
   scoreState++;
   pElement.textContent = "Score: " + scoreState + " Your Cookie Target Is: " + randomCookieGoal;
   showCookie();
+  startTimer();
   setTimeout(() => {
     removeCookie();
   }, 1000);
@@ -64,7 +65,7 @@ const endGame = () => {
   buzzer.classList.add("hide");
   restartButton.classList.add("restart-button");
   restartButton.textContent = "↺";
-  if (scoreState < randomCookieGoal) {
+  if (scoreState <= randomCookieGoal) {
     message.textContent = "You did not satisfy your cravings.." + " You only ate " + scoreState + " cookies ☹︎";
   } else {
     message.textContent = "You satisfied your cravings.. Come back next time for more!" + " You ate " + scoreState + " cookies!";
@@ -138,22 +139,20 @@ const runGame = () => {
     divElement.appendChild(cookieImg)
     gameComponents.appendChild(buzzer);
 
-    gameInstruction.textContent = "You have 2 minutes to eat as many cookies to satisfy your cookie craving by clicking the button! Eat up!";
+    gameInstruction.textContent = "You have 20 seconds to eat as many cookies to satisfy your cookie craving by clicking the button! Eat up!";
 
     divElement.appendChild(gameInstruction);
-
-    buzzer.addEventListener("click", () => {
-      buzzer.classList.add("de-scale");
-      setTimeout(() => {
-        buzzer.classList.remove("de-scale");
-      }, 200)
-      gameInstruction.remove();
-      startTimer();
-      scoreCounter();
-    });
-  }, 1200)  
+  }, 1000)  
 }
 
 window.addEventListener("keydown", runGame, { once: true });
-restartButton.addEventListener("click", restartGame);
 startButton.addEventListener("click", runGame);
+restartButton.addEventListener("click", restartGame);
+buzzer.addEventListener("click", () => {
+  buzzer.classList.add("de-scale");
+  setTimeout(() => {
+    buzzer.classList.remove("de-scale");
+  }, 200)
+  gameInstruction.remove();
+  scoreCounter();
+});

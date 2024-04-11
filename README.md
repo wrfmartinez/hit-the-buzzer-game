@@ -6,7 +6,7 @@ The primary focus of this project was to strengthen skills in DOM manipulation, 
 <img src="assets/screenshot1.png">
 
 ### How to Play
-Press the button to eat as many cookies as you can. You have 2 minutes to eat as many cookies as your cookie goal or more. If time runs out and your cookie goal is not met then you lose. If you meet your goal then you win.
+Press the button to eat as many cookies as you can. You have 20 seconds to eat as many cookies as your cookie goal or more. If time runs out and your cookie goal is not met then you lose. If you meet your goal then you win.
 
 <img src="assets/screenshot2.png">
 
