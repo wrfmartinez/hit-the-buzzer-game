@@ -45,7 +45,7 @@ const scoreCounter = () => {
     removeCookie();
     }, 1000)
   } else {
-    message.textContent = "You ate too much cookies.. Game Over";
+    message.textContent = "You satisfied your cravings.. Come back next time for more!";
     cookieImg.replaceWith(message);
   }
 }
