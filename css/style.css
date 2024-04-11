@@ -116,18 +116,18 @@ body {
 
 /* SCALE ANIMATIONS */
 .scale {
-  transition: 0.5s;
+  transition: 0.2s;
   transform: scale(2);
 }
 
 .de-scale {
-  transition: 0.5s;
-  transform: scale(1);
+  transition: 0.2s;
+  transform: scale(0.5);
 }
 
 /* ROTATE ANIMATION */
 .rotate {
-  transition: 0.8s;
+  transition: 0.2s;
   transform: rotate(1turn);
 }
 

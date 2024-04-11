@@ -23,21 +23,14 @@ const showCookie = () => {
 
   setTimeout(() => {
     cookieImg.classList.remove("rotate");
-    cookieImg.classList.add("scale");
-  }, 300)
-
-  setTimeout(() => {
-    cookieImg.classList.remove("scale");
-    cookieImg.classList.remove("rotate");
-  }, 1200)
+  }, 200)
 }
 
 const removeCookie = () => {
   displayMessage();
   setTimeout(() => {
     message.replaceWith(cookieImg);
-    cookieImg.classList.add("hide");
-  }, 700)
+  }, 400)
 }
 
 const scoreCounter = () => {
@@ -119,6 +112,10 @@ const runGame = () => {
     divElement.appendChild(gameInstruction);
 
     buzzer.addEventListener("click", () => {
+      buzzer.classList.add("de-scale");
+      setTimeout(() => {
+        buzzer.classList.remove("de-scale");
+      }, 200)
       gameInstruction.remove();
       startTimer();
       scoreCounter();
