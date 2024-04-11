@@ -3,7 +3,7 @@ const divElement = document.createElement("div");
 const pElement = document.createElement("p");
 
 // Buttons
-const restartButton = document.createElement("button");
+// const restartButton = document.createElement("button");
 const startButton = document.getElementById("start-btn");
 
 // Game elements 
@@ -61,11 +61,20 @@ const startTimer = () => {
 }
 
 const endGame = () => {
+  buzzer.removeEventListener("click", () => {
+    buzzer.classList.add("de-scale");
+    setTimeout(() => {
+      buzzer.classList.remove("de-scale");
+    }, 200)
+    gameInstruction.remove();
+    scoreCounter();
+  });
+
   scoreboardSection.classList.add("hide");
   buzzer.classList.add("hide");
-  restartButton.classList.add("restart-button");
-  restartButton.textContent = "↺";
-  if (scoreState <= randomCookieGoal) {
+  // restartButton.classList.add("restart-button");
+  // restartButton.textContent = "↺";
+  if (scoreState < randomCookieGoal) {
     message.textContent = "You did not satisfy your cravings.." + " You only ate " + scoreState + " cookies ☹︎";
   } else {
     message.textContent = "You satisfied your cravings.. Come back next time for more!" + " You ate " + scoreState + " cookies!";
@@ -75,25 +84,25 @@ const endGame = () => {
   divElement.appendChild(restartButton);
 }
 
-const restartGame = () => {
-  // Remove game elements
-  gameSection.remove();
-  scoreboardSection.remove();
-  gameComponentsDiv.remove();
-  gameDisplaySection.remove();
-  restartButton.remove();
-  message.remove();
+// const restartGame = () => {
+//   // Remove game elements
+//   gameSection.remove();
+//   scoreboardSection.remove();
+//   gameComponentsDiv.remove();
+//   gameDisplaySection.remove();
+//   restartButton.remove();
+//   message.remove();
 
-  // Reset game state
-  scoreState = 0;
-  randomCookieGoal = Math.floor(Math.random() * 205);
+//   // Reset game state
+//   scoreState = 0;
+//   randomCookieGoal = Math.floor(Math.random() * 205);
 
-  // Show game intro
-  gameIntro.setAttribute("class", "");
-  startButton.setAttribute("class", "");
-  scoreboardSection.setAttribute("class", "");
-  buzzer.setAttribute("class", "");
-}
+//   // Show game intro
+//   gameIntro.setAttribute("class", "");
+//   startButton.setAttribute("class", "");
+//   scoreboardSection.setAttribute("class", "");
+//   buzzer.setAttribute("class", "");
+// }
 
 const runGame = () => {
   // Adds fade out animation to the game intro elements
@@ -147,7 +156,7 @@ const runGame = () => {
 
 window.addEventListener("keydown", runGame, { once: true });
 startButton.addEventListener("click", runGame);
-restartButton.addEventListener("click", restartGame);
+// restartButton.addEventListener("click", restartGame);
 buzzer.addEventListener("click", () => {
   buzzer.classList.add("de-scale");
   setTimeout(() => {
