@@ -9,7 +9,7 @@ const buzzer = document.createElement("button");
 const cookieImg = document.createElement("img");
 let message = document.createElement("p");
 let scoreState = 0;
-const randomCookieGoal = Math.floor(Math.random() * 100);
+const randomCookieGoal = Math.floor(Math.random() * 205);
 
 const displayMessage = () => {
   message.textContent = "You Win A Cookie!";
