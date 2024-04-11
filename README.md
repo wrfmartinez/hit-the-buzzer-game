@@ -6,7 +6,7 @@ The primary focus of this project was to strengthen skills in DOM manipulation, 
 <img src="assets/screenshot1.png">
 
 ### How to Play
-Press the button until you eat too much cookies.
+Press the button to eat as many cookies as you can. You have 2 minutes to eat as many cookies as your cookie goal or more. If time runs out and your cookie goal is not met then you lose. If you meet your goal then you win.
 
 <img src="assets/screenshot2.png">
 
@@ -16,6 +16,10 @@ Press the button until you eat too much cookies.
 <p style="color: #FFBF00">JavaScript</p>
 
 ### Planned Additional Features
+- [x] If user does not press the button enough times within a certain amount of time then user loses
+
 - If user does not press the button within a certain amount of time then the score will decrease by a certain amount
-- Add effect to button press. Giving the illusion of an actual button press
+
+- [x] Add effect to button press. Giving the illusion of an actual button press
+
 - Add a moving effect to the button. Button should move from left to right and gradually increase speed after each button press to make it harder to hit the buzzer.
