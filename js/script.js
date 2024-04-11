@@ -1,16 +1,22 @@
 const body = document.querySelector("body");
-const restartButton = document.createElement("button");
-const startButton = document.getElementById("start-btn");
 const divElement = document.createElement("div");
 const pElement = document.createElement("p");
-const gameSection = document.createElement("section");
-const gameInstruction = document.createElement("p");
-const gameComponentsDiv = document.createElement("div");
-const gameDisplaySection = document.createElement("section");
+
+// Buttons
+const restartButton = document.createElement("button");
+const startButton = document.getElementById("start-btn");
+
+// Game elements 
 const gameIntro = document.getElementById("game-intro");
+const gameSection = document.createElement("section");
+const gameDisplaySection = document.createElement("section");
+const gameComponentsDiv = document.createElement("div");
 const scoreboardSection = document.createElement("section");
+const gameInstruction = document.createElement("p");
 const buzzer = document.createElement("button");
 const cookieImg = document.createElement("img");
+
+// Game states
 let message = document.createElement("p");
 let scoreState = 0;
 let randomCookieGoal = Math.floor(Math.random() * 205);
@@ -38,15 +44,16 @@ const removeCookie = () => {
 }
 
 const scoreCounter = () => {
-    scoreState++;
-    pElement.textContent = "Score: " + scoreState + " Your Cookie Target Is: " + randomCookieGoal;
-    showCookie();
-    setTimeout(() => {
-      removeCookie();
-    }, 1000);
+  scoreState++;
+  pElement.textContent = "Score: " + scoreState + " Your Cookie Target Is: " + randomCookieGoal;
+  showCookie();
+  setTimeout(() => {
+    removeCookie();
+  }, 1000);
 }
 
 const startTimer = () => {
+  // Initiate a 2 minute timer
   setTimeout(() => {
     endGame();
   }, 20000);
@@ -65,6 +72,26 @@ const endGame = () => {
 
   cookieImg.replaceWith(message);
   divElement.appendChild(restartButton);
+}
+
+const restartGame = () => {
+  // Remove game elements
+  gameSection.remove();
+  scoreboardSection.remove();
+  gameComponentsDiv.remove();
+  gameDisplaySection.remove();
+  restartButton.remove();
+  message.remove();
+
+  // Reset game state
+  scoreState = 0;
+  randomCookieGoal = Math.floor(Math.random() * 205);
+
+  // Show game intro
+  gameIntro.setAttribute("class", "");
+  startButton.setAttribute("class", "");
+  scoreboardSection.setAttribute("class", "");
+  buzzer.setAttribute("class", "");
 }
 
 const runGame = () => {
@@ -128,23 +155,5 @@ const runGame = () => {
 }
 
 window.addEventListener("keydown", runGame, { once: true });
-restartButton.addEventListener("click", () => {
-  // Remove game elements
-  gameSection.remove();
-  scoreboardSection.remove();
-  gameComponentsDiv.remove();
-  gameDisplaySection.remove();
-  restartButton.remove();
-  message.remove();
-
-  // Reset game state
-  scoreState = 0;
-  randomCookieGoal = Math.floor(Math.random() * 205);
-
-  // Show game intro
-  gameIntro.setAttribute("class", "");
-  startButton.setAttribute("class", "");
-  scoreboardSection.setAttribute("class", "");
-  buzzer.setAttribute("class", "");
-});
+restartButton.addEventListener("click", restartGame);
 startButton.addEventListener("click", runGame);
