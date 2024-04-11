@@ -1,15 +1,19 @@
 const body = document.querySelector("body");
+const restartButton = document.createElement("button");
 const startButton = document.getElementById("start-btn");
 const divElement = document.createElement("div");
 const pElement = document.createElement("p");
+const gameSection = document.createElement("section");
 const gameInstruction = document.createElement("p");
 const gameComponentsDiv = document.createElement("div");
+const gameDisplaySection = document.createElement("section");
+const gameIntro = document.getElementById("game-intro");
 const scoreboardSection = document.createElement("section");
 const buzzer = document.createElement("button");
 const cookieImg = document.createElement("img");
 let message = document.createElement("p");
 let scoreState = 0;
-const randomCookieGoal = Math.floor(Math.random() * 205);
+let randomCookieGoal = Math.floor(Math.random() * 205);
 
 const displayMessage = () => {
   message.textContent = "You Win A Cookie!";
@@ -51,19 +55,19 @@ const startTimer = () => {
 const endGame = () => {
   scoreboardSection.classList.add("hide");
   buzzer.classList.add("hide");
+  restartButton.classList.add("restart-button");
+  restartButton.textContent = "↺";
   if (scoreState < randomCookieGoal) {
     message.textContent = "You did not satisfy your cravings.." + " You only ate " + scoreState + " cookies ☹︎";
   } else {
     message.textContent = "You satisfied your cravings.. Come back next time for more!" + " You ate " + scoreState + " cookies!";
   }
+
   cookieImg.replaceWith(message);
+  divElement.appendChild(restartButton);
 }
 
 const runGame = () => {
-  const gameSection = document.createElement("section");
-  const gameDisplaySection = document.createElement("section");
-  const gameIntro = document.getElementById("game-intro");
-  
   // Adds fade out animation to the game intro elements
   gameIntro.classList.add("fade-out");
   startButton.classList.add("fade-out");
@@ -124,4 +128,23 @@ const runGame = () => {
 }
 
 window.addEventListener("keydown", runGame, { once: true });
+restartButton.addEventListener("click", () => {
+  // Remove game elements
+  gameSection.remove();
+  scoreboardSection.remove();
+  gameComponentsDiv.remove();
+  gameDisplaySection.remove();
+  restartButton.remove();
+  message.remove();
+
+  // Reset game state
+  scoreState = 0;
+  randomCookieGoal = Math.floor(Math.random() * 205);
+
+  // Show game intro
+  gameIntro.setAttribute("class", "");
+  startButton.setAttribute("class", "");
+  scoreboardSection.setAttribute("class", "");
+  buzzer.setAttribute("class", "");
+});
 startButton.addEventListener("click", runGame);

@@ -68,6 +68,7 @@ body {
 
 .game-components > div {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   font-size: 0.8em;
@@ -102,6 +103,24 @@ body {
 }
 
 #buzzer:hover {
+  cursor: pointer;
+}
+
+.restart-button {
+  text-align: center;
+  font-size: 20px;
+  color: #FFF;
+  font-weight: 600;
+  background-color: var(--quinary-color);
+  padding: 10px;
+  border-top: 4px solid black;
+  border-right: 4px solid black;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+  border-radius: 15px;
+}
+
+.restart-button:hover {
   cursor: pointer;
 }
 
